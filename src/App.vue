@@ -70,6 +70,30 @@
         </v-list-item-group>
       </v-list>
 
+      <v-list class="d-block d-sm-none">
+        <v-subheader>FEEDS</v-subheader>
+        <v-list-item @click="refreshFeed">
+          <v-list-item-icon>
+            <v-icon>mdi-refresh</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            Refresh
+          </v-list-item-content>
+        </v-list-item>
+        <FeedDialog @feedSubmitted="getFeed">
+          <template v-slot:dialog-activator="{ on }">
+            <v-list-item v-on="on">
+              <v-list-item-icon>
+                <v-icon>mdi-plus</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                Add Feed
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+        </FeedDialog>
+      </v-list>
+
     </v-navigation-drawer>
 
     <v-content>
