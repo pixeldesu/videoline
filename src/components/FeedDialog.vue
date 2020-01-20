@@ -4,7 +4,7 @@
       width="500"
     >
     <template v-slot:activator="{ on }">
-      <v-btn text v-on="on">
+      <v-btn class="d-none d-sm-flex" text v-on="on">
         <v-icon left>mdi-plus</v-icon> Add Feed
       </v-btn>
     </template>

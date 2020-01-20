@@ -14,6 +14,7 @@
       <v-spacer></v-spacer>
 
       <v-text-field
+        class="d-none d-sm-flex"
         flat
         hide-details
         single-line
@@ -26,7 +27,11 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text @click="refreshFeed">
+        <v-btn
+          class="d-none d-sm-flex"
+          text
+          @click="refreshFeed"
+        >
           <v-icon left>mdi-refresh</v-icon> Refresh
         </v-btn>
         <FeedDialog @feedSubmitted="getFeed"/>
