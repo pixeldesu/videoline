@@ -49,7 +49,7 @@
       clipped
       v-model="drawer"
     >
-      <v-list class="d-block d-sm-none">
+      <v-list dense class="d-block d-sm-none">
         <v-list-item inactive>
           <v-text-field
             solo-inverted
@@ -84,7 +84,7 @@
         </v-list-item-group>
       </v-list>
 
-      <v-list class="d-block d-sm-none">
+      <v-list dense class="d-block d-sm-none">
         <v-subheader>FEEDS</v-subheader>
         <v-list-item @click="refreshFeed">
           <v-list-item-icon>
