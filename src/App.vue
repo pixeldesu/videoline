@@ -49,6 +49,20 @@
       clipped
       v-model="drawer"
     >
+      <v-list class="d-block d-sm-none">
+        <v-list-item inactive>
+          <v-text-field
+            solo-inverted
+            flat
+            hide-details
+            single-line
+            label="Search"
+            v-model="searchQuery"
+            clearable
+          />
+        </v-list-item>
+      </v-list>
+
       <v-list dense>
         <v-subheader>CHANNELS</v-subheader>
         <v-list-item-group v-model="selectedChannel" color="primary">
