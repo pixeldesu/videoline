@@ -34,7 +34,13 @@
         >
           <v-icon left>mdi-refresh</v-icon> Refresh
         </v-btn>
-        <FeedDialog @feedSubmitted="getFeed"/>
+        <FeedDialog @feedSubmitted="getFeed">
+          <template v-slot:dialog-activator="{ on }">
+            <v-btn class="d-none d-sm-flex" text v-on="on">
+              <v-icon left>mdi-plus</v-icon> Add Feed
+            </v-btn>
+          </template>
+        </FeedDialog>
       </v-toolbar-items>
     </v-app-bar>
 

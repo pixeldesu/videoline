@@ -3,10 +3,9 @@
       v-model="dialog"
       width="500"
     >
+
     <template v-slot:activator="{ on }">
-      <v-btn class="d-none d-sm-flex" text v-on="on">
-        <v-icon left>mdi-plus</v-icon> Add Feed
-      </v-btn>
+      <slot name="dialog-activator" v-bind:on="on"></slot>
     </template>
 
     <v-card>
