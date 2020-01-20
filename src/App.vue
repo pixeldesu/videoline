@@ -73,8 +73,8 @@
 import orderBy from 'lodash.orderby';
 import find from 'lodash.find';
 
-import FeedContainer from './components/FeedContainer';
-import FeedDialog from './components/FeedDialog';
+import FeedContainer from './components/FeedContainer.vue';
+import FeedDialog from './components/FeedDialog.vue';
 
 import database from './modules/database';
 import fuse from './modules/search';
@@ -85,7 +85,7 @@ export default {
 
   components: {
     FeedContainer,
-    FeedDialog
+    FeedDialog,
   },
 
   data: () => ({
@@ -95,64 +95,64 @@ export default {
     channels: [],
     videos: [],
     fuse: null,
-    searchQuery: ""
+    searchQuery: '',
   }),
 
   methods: {
-    refreshFeed: async function () {
-      let that = this;
+    async refreshFeed() {
+      const that = this;
 
-      this.channels.forEach(async function (channel) {
-        let feed = await loadFeed(channel.id);
+      this.channels.forEach(async (channel) => {
+        const feed = await loadFeed(channel.id);
         that.addVideos(feed);
-      })
+      });
     },
-    getFeed: async function (channelID) {
+    async getFeed(channelID) {
       this.loading = true;
-      let feed = await loadFeed(channelID);
+      const feed = await loadFeed(channelID);
       this.loading = false;
       this.addChannel(feed);
       this.addVideos(feed);
     },
-    addChannel: async function (feed) {
-      let channel = {
+    async addChannel(feed) {
+      const channel = {
         name: feed.author[0].name[0],
-        id: feed['yt:channelId'][0]
+        id: feed['yt:channelId'][0],
       };
 
       this.channels.push(channel);
       await database.channels.put(channel);
     },
-    addVideos: async function (feed) {
-      let that = this;
+    async addVideos(feed) {
+      const that = this;
 
-      feed.entry.forEach(async function (entry) {
-        let video = {
+      feed.entry.forEach(async (entry) => {
+        const video = {
           id: entry['yt:videoId'][0],
           title: entry.title[0],
           description: entry['media:group'][0]['media:description'][0],
           author: feed.author[0].name[0],
           channel: feed['yt:channelId'][0],
-          views: entry['media:group'][0]['media:community'][0]['media:statistics'][0]['$']['views'],
-          thumbnail: entry['media:group'][0]['media:thumbnail'][0]['$']['url'],
-          published: entry['published'][0],
-          updated: entry['updated'][0]
+          views: entry['media:group'][0]['media:community'][0]['media:statistics'][0].$.views,
+          thumbnail: entry['media:group'][0]['media:thumbnail'][0].$.url,
+          published: entry.published[0],
+          updated: entry.updated[0],
         };
 
-        if (find(that.videos, { 'channel': video.channel }) === undefined) {
+        if (find(that.videos, { channel: video.channel }) === undefined) {
           await database.videos.put(video);
         }
-      })
+      });
 
       this.getVideos();
     },
-    getVideos: async function () {
+    async getVideos() {
       let videos;
 
       if (this.selectedChannel === 0) {
         videos = await database.videos.toArray();
       } else {
-        let channelIndex = this.selectedChannel - 1;
+        const channelIndex = this.selectedChannel - 1;
 
         if (this.channels[channelIndex]) {
           videos = await database
@@ -168,8 +168,8 @@ export default {
         this.videos = orderBy(videos, ['published'], ['desc']);
       }
     },
-    removeChannel: async function (index) {
-      let channel = this.channels[index];
+    async removeChannel(index) {
+      const channel = this.channels[index];
 
       await database.videos
         .where('channel')
@@ -184,7 +184,7 @@ export default {
       this.channels.splice(index, 1);
 
       if ((this.selectedChannel - 1) === index) {
-        this.selectedChannel = this.selectedChannel - 1;
+        this.selectedChannel -= 1;
       }
 
       if (this.channels.length === 0) {
@@ -193,26 +193,24 @@ export default {
 
       this.getVideos();
     },
-    search: function () {
+    search() {
       this.videos = orderBy(this.fuse.search(this.searchQuery), ['published'], ['desc']);
-    }
+    },
   },
 
-  created: async function () {
+  async created() {
     this.channels = await database.channels.toArray();
     this.getVideos();
   },
 
   watch: {
-    selectedChannel: function (value, oldValue) {
+    selectedChannel(value, oldValue) {
       if (value === undefined) {
         this.selectedChannel = oldValue - 1;
-      }
-      else if (value < 0 || oldValue < 0) {
+      } else if (value < 0 || oldValue < 0) {
         this.selectedChannel = 0;
-      }
-      else {
-        let channelIndex = value - 1;
+      } else {
+        const channelIndex = value - 1;
 
         if (this.channels[channelIndex] === undefined) {
           this.selectedChannel = value - 1;
@@ -221,13 +219,13 @@ export default {
 
       this.getVideos();
     },
-    searchQuery: function (value) {
+    searchQuery(value) {
       if (value === '' || value === null) {
         this.getVideos();
       } else {
         this.search();
       }
-    }
-  }
+    },
+  },
 };
 </script>

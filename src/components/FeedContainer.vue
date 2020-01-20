@@ -16,16 +16,16 @@
 </template>
 
 <script>
-import FeedItem from './FeedItem';
+import FeedItem from './FeedItem.vue';
 
 export default {
   name: 'FeedContainer',
   props: [
     'loading',
-    'entries'
+    'entries',
   ],
   components: {
-    FeedItem
-  }
-}
+    FeedItem,
+  },
+};
 </script>

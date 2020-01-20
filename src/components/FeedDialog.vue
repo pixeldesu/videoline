@@ -42,7 +42,7 @@ export default {
   name: 'FeedDialog',
   data: () => ({
     dialog: false,
-    channelId: ""
-  })
-}
+    channelId: '',
+  }),
+};
 </script>

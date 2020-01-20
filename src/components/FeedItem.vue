@@ -23,9 +23,9 @@ export default {
   name: 'FeedItem',
   props: ['entry'],
   computed: {
-    link: function () {
-      return `https://www.invidio.us/watch?v=${this.entry.id}`
-    }
-  }
-}
+    link() {
+      return `https://www.invidio.us/watch?v=${this.entry.id}`;
+    },
+  },
+};
 </script>
