@@ -280,3 +280,9 @@ export default {
   },
 };
 </script>
+
+<style>
+body {
+  background-color: #1976d2;
+}
+</style>
