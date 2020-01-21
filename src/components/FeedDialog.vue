@@ -27,7 +27,7 @@
         <v-btn
           color="primary"
           text
-          @click="$emit('feedSubmitted', channelId)"
+          @click="feedSubmit"
         >
           Add
         </v-btn>
@@ -43,5 +43,12 @@ export default {
     dialog: false,
     channelId: '',
   }),
+  methods: {
+    feedSubmit() {
+      this.$emit('feedSubmitted', this.channelId);
+      this.dialog = false;
+      this.channelId = '';
+    },
+  },
 };
 </script>
