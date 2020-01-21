@@ -169,8 +169,10 @@ export default {
         id: feed['yt:channelId'][0],
       };
 
-      this.channels.push(channel);
-      await database.channels.put(channel);
+      if (find(this.channels, { id: channel.id }) === undefined) {
+        this.channels.push(channel);
+        await database.channels.put(channel);
+      }
     },
     async addVideos(feed) {
       const that = this;
