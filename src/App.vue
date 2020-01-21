@@ -188,7 +188,7 @@ export default {
           updated: entry.updated[0],
         };
 
-        if (find(that.videos, { channel: video.channel }) === undefined) {
+        if (find(that.videos, { id: video.id }) === undefined) {
           await database.videos.put(video);
         }
       });
