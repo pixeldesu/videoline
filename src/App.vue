@@ -112,6 +112,7 @@
 
     <v-content>
       <v-container>
+        <v-alert v-if="errorMessage" type="error" dismissible v-html="errorMessage"></v-alert>
         <FeedContainer v-if="videos" :loading="loading" :entries="videos"/>
       </v-container>
     </v-content>
@@ -138,13 +139,14 @@ export default {
   },
 
   data: () => ({
-    selectedChannel: 0,
-    drawer: false,
-    loading: false,
     channels: [],
-    videos: [],
+    drawer: false,
+    errorMessage: '',
     fuse: null,
+    loading: false,
     searchQuery: '',
+    selectedChannel: 0,
+    videos: [],
   }),
 
   methods: {
@@ -158,10 +160,16 @@ export default {
     },
     async getFeed(channelID) {
       this.loading = true;
-      const feed = await loadFeed(channelID);
-      this.loading = false;
-      this.addChannel(feed);
-      this.addVideos(feed);
+      try {
+        const feed = await loadFeed(channelID);
+        this.addChannel(feed);
+        this.addVideos(feed);
+      } catch (e) {
+        this.errorMessage = e.message;
+        setInterval(() => { this.errorMessage = ''; }, 10 * 1000); // Automatic dismiss after 10 seconds
+      } finally {
+        this.loading = false;
+      }
     },
     async addChannel(feed) {
       const channel = {
