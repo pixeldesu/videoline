@@ -10,7 +10,7 @@
         color="grey darken-4 white--text transparent"
         label
       >
-        {{ entry.views }} views
+        {{ entry.views | thousands_sep }} views
       </v-chip>
     </v-img>
     <v-card-title class="subtitle-2 text-truncate d-block">{{ entry.title }}</v-card-title>
@@ -25,6 +25,12 @@ export default {
   computed: {
     link() {
       return `https://www.invidio.us/watch?v=${this.entry.id}`;
+    },
+  },
+  filters: {
+    thousands_sep(number) {
+      // return number;
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     },
   },
 };
