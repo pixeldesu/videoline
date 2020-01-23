@@ -16,6 +16,8 @@
         Add Channel Feed
       </v-card-title>
 
+      Use Channel IDs<v-switch v-model="switch1"></v-switch> Use usernames<br />
+
       <v-card-text>
         <v-text-field v-model="channelId" prefix="https://youtube.com/channel/" placeholder="YouTube channel ID"/>
       </v-card-text>
