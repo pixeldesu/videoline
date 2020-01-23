@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 
 import AppBar from './components/AppBar.vue';
 import AppNavigationDrawer from './components/AppNavigationDrawer.vue';
@@ -55,43 +55,14 @@ export default {
       },
     },
     ...mapState([
-      'channels',
       'loading',
       'videos',
-    ]),
-  },
-
-  methods: {
-    ...mapActions([
-      'addChannel',
-      'addVideos',
-      'getFeed',
-      'getVideos',
-      'refreshFeed',
-      'removeChannel',
-      'toggleDrawer',
     ]),
   },
 
   async created() {
     this.$store.dispatch('getChannels');
     this.$store.dispatch('getVideos');
-  },
-
-  watch: {
-    selectedChannel(value, oldValue) {
-      if (value === undefined) {
-        this.selectedChannel = oldValue - 1;
-      } else if (value < 0 || oldValue < 0) {
-        this.selectedChannel = 0;
-      } else {
-        const channelIndex = value - 1;
-
-        if (this.channels[channelIndex] === undefined) {
-          this.selectedChannel = value - 1;
-        }
-      }
-    },
   },
 };
 </script>
