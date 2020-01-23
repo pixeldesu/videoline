@@ -27,38 +27,10 @@ export default {
     FeedContainer,
   },
 
-  computed: {
-    drawer: {
-      get() {
-        return this.$store.state.drawer;
-      },
-      set(value) {
-        if (this.$store.state.drawer !== value) {
-          this.$store.dispatch('toggleDrawer');
-        }
-      },
-    },
-    searchQuery: {
-      get() {
-        return this.$store.state.searchQuery;
-      },
-      set(value) {
-        this.$store.dispatch('search', value);
-      },
-    },
-    selectedChannel: {
-      get() {
-        return this.$store.state.selectedChannel;
-      },
-      set(value) {
-        this.$store.dispatch('selectChannel', value);
-      },
-    },
-    ...mapState([
-      'loading',
-      'videos',
-    ]),
-  },
+  computed: mapState([
+    'loading',
+    'videos',
+  ]),
 
   async created() {
     this.$store.dispatch('getChannels');
