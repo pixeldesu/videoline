@@ -119,15 +119,10 @@
 </template>
 
 <script>
-import orderBy from 'lodash.orderby';
-import find from 'lodash.find';
+import { mapState, mapActions } from 'vuex';
 
 import FeedContainer from './components/FeedContainer.vue';
 import FeedDialog from './components/FeedDialog.vue';
-
-import database from './modules/database';
-import fuse from './modules/search';
-import loadFeed from './modules/feed';
 
 export default {
   name: 'App',
@@ -137,121 +132,56 @@ export default {
     FeedDialog,
   },
 
-  data: () => ({
-    selectedChannel: 0,
-    drawer: false,
-    loading: false,
-    channels: [],
-    videos: [],
-    fuse: null,
-    searchQuery: '',
-  }),
+  computed: {
+    drawer: {
+      get() {
+        return this.$store.state.drawer;
+      },
+      set(value) {
+        if (this.$store.state.drawer !== value) {
+          this.$store.dispatch('toggleDrawer');
+        }
+      },
+    },
+    searchQuery: {
+      get() {
+        return this.$store.state.searchQuery;
+      },
+      set(value) {
+        this.$store.dispatch('search', value);
+      },
+    },
+    selectedChannel: {
+      get() {
+        return this.$store.state.selectedChannel;
+      },
+      set(value) {
+        this.$store.dispatch('selectChannel', value);
+      },
+    },
+    ...mapState([
+      'channels',
+      'fuse',
+      'loading',
+      'videos',
+    ]),
+  },
 
   methods: {
-    async refreshFeed() {
-      const that = this;
-
-      this.channels.forEach(async (channel) => {
-        const feed = await loadFeed(channel.id);
-        that.addVideos(feed);
-      });
-    },
-    async getFeed(channelID) {
-      this.loading = true;
-      const feed = await loadFeed(channelID);
-      this.loading = false;
-      this.addChannel(feed);
-      this.addVideos(feed);
-    },
-    async addChannel(feed) {
-      const channel = {
-        name: feed.author[0].name[0],
-        id: feed['yt:channelId'][0],
-      };
-
-      if (find(this.channels, { id: channel.id }) === undefined) {
-        this.channels.push(channel);
-        await database.channels.put(channel);
-      }
-    },
-    async addVideos(feed) {
-      const that = this;
-
-      feed.entry.forEach(async (entry) => {
-        const video = {
-          id: entry['yt:videoId'][0],
-          title: entry.title[0],
-          description: entry['media:group'][0]['media:description'][0],
-          author: feed.author[0].name[0],
-          channel: feed['yt:channelId'][0],
-          views: entry['media:group'][0]['media:community'][0]['media:statistics'][0].$.views,
-          thumbnail: entry['media:group'][0]['media:thumbnail'][0].$.url,
-          published: entry.published[0],
-          updated: entry.updated[0],
-        };
-
-        if (find(that.videos, { id: video.id }) === undefined) {
-          await database.videos.put(video);
-        }
-      });
-
-      this.getVideos();
-    },
-    async getVideos() {
-      let videos;
-
-      if (this.selectedChannel === 0) {
-        videos = await database.videos.toArray();
-      } else {
-        const channelIndex = this.selectedChannel - 1;
-
-        if (this.channels[channelIndex]) {
-          videos = await database
-            .videos
-            .where('channel')
-            .equals(this.channels[channelIndex].id)
-            .toArray();
-        }
-      }
-
-      if (videos) {
-        this.fuse = fuse(videos);
-        this.videos = orderBy(videos, ['published'], ['desc']);
-      }
-    },
-    async removeChannel(index) {
-      const channel = this.channels[index];
-
-      await database.videos
-        .where('channel')
-        .equals(channel.id)
-        .delete();
-
-      await database.channels
-        .where('id')
-        .equals(channel.id)
-        .delete();
-
-      this.channels.splice(index, 1);
-
-      if ((this.selectedChannel - 1) === index) {
-        this.selectedChannel -= 1;
-      }
-
-      if (this.channels.length === 0) {
-        this.selectedChannel = 0;
-      }
-
-      this.getVideos();
-    },
-    search() {
-      this.videos = orderBy(this.fuse.search(this.searchQuery), ['published'], ['desc']);
-    },
+    ...mapActions([
+      'addChannel',
+      'addVideos',
+      'getFeed',
+      'getVideos',
+      'refreshFeed',
+      'removeChannel',
+      'toggleDrawer',
+    ]),
   },
 
   async created() {
-    this.channels = await database.channels.toArray();
-    this.getVideos();
+    this.$store.dispatch('getChannels');
+    this.$store.dispatch('getVideos');
   },
 
   watch: {
@@ -266,15 +196,6 @@ export default {
         if (this.channels[channelIndex] === undefined) {
           this.selectedChannel = value - 1;
         }
-      }
-
-      this.getVideos();
-    },
-    searchQuery(value) {
-      if (value === '' || value === null) {
-        this.getVideos();
-      } else {
-        this.search();
       }
     },
   },

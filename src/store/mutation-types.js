@@ -1,0 +1,10 @@
+export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
+export const GET_CHANNELS = 'GET_CHANNELS';
+export const SELECT_CHANNEL = 'SELECT_CHANNEL';
+export const ADD_CHANNEL = 'ADD_CHANNEL';
+export const REMOVE_CHANNEL = 'REMOVE_CHANNEL';
+export const GET_VIDEOS = 'GET_VIDEOS';
+export const UPDATE_SEARCH_INDEX = 'UPDATE_SEARCH_INDEX';
+export const SET_LOADING = 'SET_LOADING';
+export const SEARCH = 'SEARCH';
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
