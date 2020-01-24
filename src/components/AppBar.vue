@@ -30,13 +30,13 @@
         text
         @click="refreshFeed"
       >
-        <v-icon left>mdi-refresh</v-icon>
+        <v-icon :left="$vuetify.breakpoint.smAndUp">mdi-refresh</v-icon>
         <span class="d-none d-sm-inline">Refresh</span>
       </v-btn>
       <FeedDialog @feedSubmitted="getFeed">
         <template v-slot:dialog-activator="{ on }">
           <v-btn text v-on="on">
-            <v-icon left>mdi-plus</v-icon>
+            <v-icon :left="$vuetify.breakpoint.smAndUp">mdi-plus</v-icon>
             <span class="d-none d-sm-inline">Add Feed</span>
           </v-btn>
         </template>
