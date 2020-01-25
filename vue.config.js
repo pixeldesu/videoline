@@ -1,6 +1,7 @@
 module.exports = {
   transpileDependencies: [
     'vuetify',
+    'vuex-persist',
   ],
   pwa: {
     name: 'videoline',
