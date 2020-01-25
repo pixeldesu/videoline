@@ -33,8 +33,9 @@ export default {
   ]),
 
   async created() {
-    this.$store.dispatch('getChannels');
-    this.$store.dispatch('getVideos');
+    this.$store.dispatch('getChannels').then(() => {
+      this.$store.dispatch('getVideos');
+    });
   },
 };
 </script>
