@@ -13,7 +13,12 @@ export default {
   },
 
   async getChannels({ commit }) {
-    commit(types.GET_CHANNELS, await database.channels.toArray());
+    return new Promise((resolve) => {
+      database.channels.toArray().then((result) => {
+        commit(types.GET_CHANNELS, result);
+        resolve();
+      });
+    });
   },
 
   selectChannel({ commit, dispatch }, index) {
