@@ -17,7 +17,12 @@
       </v-card-title>
 
       <v-card-text>
-        <v-text-field v-model="channelId" prefix="https://youtube.com/channel/" placeholder="YouTube channel ID"/>
+        <v-text-field
+          v-model="channelId"
+          prefix="https://youtube.com/channel/"
+          placeholder="YouTube channel ID"
+          ref="channel"
+        />
       </v-card-text>
 
       <v-divider></v-divider>
@@ -28,6 +33,7 @@
           color="primary"
           text
           @click="feedSubmit"
+          :disabled="!channelId"
         >
           Add
         </v-btn>
@@ -45,9 +51,20 @@ export default {
   }),
   methods: {
     feedSubmit() {
-      this.$emit('feedSubmitted', this.channelId);
-      this.dialog = false;
-      this.channelId = '';
+      if (this.channelId) {
+        this.$emit('feedSubmitted', this.channelId);
+        this.dialog = false;
+        this.channelId = '';
+      }
+    },
+  },
+  watch: {
+    dialog(value) {
+      if (value) {
+        requestAnimationFrame(() => {
+          this.$refs.channel.focus();
+        });
+      }
     },
   },
 };

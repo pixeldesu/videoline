@@ -55,6 +55,12 @@
         {
           "props": false
         }
+      ],
+      "no-trailing-spaces": [
+        "error",
+        {
+          "skipBlankLines": true
+        }
       ]
     },
     "parserOptions": {
