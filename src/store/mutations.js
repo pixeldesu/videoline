@@ -31,4 +31,10 @@ export default {
   [types.SET_SEARCH_QUERY](state, query) {
     state.searchQuery = query;
   },
+  [types.SET_SORTING_PROPERTY](state, property) {
+    state.sorting.property = property;
+  },
+  [types.SET_SORTING_ORDER](state, order) {
+    state.sorting.order = order;
+  },
 };

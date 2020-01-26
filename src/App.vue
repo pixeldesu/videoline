@@ -5,6 +5,7 @@
 
     <v-content>
       <v-container>
+        <FeedSortFilter/>
         <FeedContainer v-if="videos" :loading="loading" :entries="videos"/>
       </v-container>
     </v-content>
@@ -17,6 +18,7 @@ import { mapState } from 'vuex';
 import AppBar from './components/AppBar.vue';
 import AppNavigationDrawer from './components/AppNavigationDrawer.vue';
 import FeedContainer from './components/FeedContainer.vue';
+import FeedSortFilter from './components/FeedSortFilter.vue';
 
 export default {
   name: 'App',
@@ -25,6 +27,7 @@ export default {
     AppBar,
     AppNavigationDrawer,
     FeedContainer,
+    FeedSortFilter,
   },
 
   computed: mapState([
@@ -33,8 +36,9 @@ export default {
   ]),
 
   async created() {
-    this.$store.dispatch('getChannels');
-    this.$store.dispatch('getVideos');
+    this.$store.dispatch('getChannels').then(() => {
+      this.$store.dispatch('getVideos');
+    });
   },
 };
 </script>

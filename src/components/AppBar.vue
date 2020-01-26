@@ -33,6 +33,7 @@
         <v-icon :left="$vuetify.breakpoint.smAndUp">mdi-refresh</v-icon>
         <span class="d-none d-sm-inline">Refresh</span>
       </v-btn>
+      
       <FeedDialog @feedSubmitted="getFeed">
         <template v-slot:dialog-activator="{ on }">
           <v-btn text v-on="on">
