@@ -7,4 +7,11 @@ database.version(1).stores({
   videos: '&id,title,description,author,channel,views,thumbnail,published,updated',
 });
 
+database.version(2).stores({
+  channels: '&id,name',
+  videos: '&id,title,description,author,channel,views,thumbnail,published,updated',
+}).upgrade((trans) => trans.videos.toCollection().modify((video) => {
+  video.views = parseInt(video.views, 10);
+}));
+
 export default database;
