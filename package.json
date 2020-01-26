@@ -50,18 +50,8 @@
       "airbnb-base"
     ],
     "rules": {
-      "no-param-reassign": [
-        "error",
-        {
-          "props": false
-        }
-      ],
-      "no-trailing-spaces": [
-        "error",
-        {
-          "skipBlankLines": true
-        }
-      ]
+      "no-param-reassign": ["error", { "props": false }],
+      "no-trailing-spaces": ["error", { "skipBlankLines":  true}]
     },
     "parserOptions": {
       "parser": "babel-eslint"
