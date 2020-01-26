@@ -6,4 +6,8 @@ export default {
   searchQuery: '',
   selectedChannel: 0,
   videos: [],
+  sorting: {
+    property: 'published',
+    order: 'desc',
+  },
 };
