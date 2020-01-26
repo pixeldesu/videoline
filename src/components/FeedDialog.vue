@@ -17,7 +17,11 @@
       </v-card-title>
 
       <v-card-text>
-        <v-text-field v-model="channelId" prefix="https://youtube.com/channel/" placeholder="YouTube channel ID"/>
+        <v-text-field
+          v-model="channelId"
+          prefix="https://youtube.com/channel/"
+          placeholder="YouTube channel ID"
+        />
       </v-card-text>
 
       <v-divider></v-divider>
@@ -45,7 +49,10 @@ export default {
   }),
   methods: {
     feedSubmit() {
-      this.$emit('feedSubmitted', this.channelId);
+      if (this.channelId) {
+        this.$emit('feedSubmitted', this.channelId);
+      }
+      
       this.dialog = false;
       this.channelId = '';
     },
