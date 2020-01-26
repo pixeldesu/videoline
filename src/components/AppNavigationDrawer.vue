@@ -38,14 +38,25 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
+    <template v-slot:append>
+      <v-divider/>
+      <v-list dense>
+        <AboutDialog/>
+      </v-list>
+    </template>
   </v-navigation-drawer>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
 
+import AboutDialog from './AboutDialog.vue';
+
 export default {
   name: 'AppNavigationDrawer',
+  components: {
+    AboutDialog,
+  },
   computed: {
     drawer: {
       get() {
