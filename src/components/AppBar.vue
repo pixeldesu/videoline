@@ -18,7 +18,7 @@
       hide-details
       single-line
       outlined
-      label="Search"
+      :placeholder="$t('Search')"
       v-model="searchQuery"
       clearable
     />
@@ -31,14 +31,14 @@
         @click="refreshFeed"
       >
         <v-icon :left="$vuetify.breakpoint.smAndUp">mdi-refresh</v-icon>
-        <span class="d-none d-sm-inline">Refresh</span>
+        <span class="d-none d-sm-inline">{{ $t('Refresh') }}</span>
       </v-btn>
       
       <FeedDialog @feedSubmitted="getFeed">
         <template v-slot:dialog-activator="{ on }">
           <v-btn text v-on="on">
             <v-icon :left="$vuetify.breakpoint.smAndUp">mdi-plus</v-icon>
-            <span class="d-none d-sm-inline">Add Feed</span>
+            <span class="d-none d-sm-inline">{{ $t('Add feed') }}</span>
           </v-btn>
         </template>
       </FeedDialog>

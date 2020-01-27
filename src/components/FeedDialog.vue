@@ -13,14 +13,14 @@
         class="headline grey lighten-2"
         primary-title
       >
-        Add Channel Feed
+        {{ $t('Add channel feed') }}
       </v-card-title>
 
       <v-card-text>
         <v-text-field
           v-model="channelId"
           prefix="https://youtube.com/channel/"
-          placeholder="YouTube channel ID"
+          :placeholder="$t('YouTube channel ID')"
           ref="channel"
         />
       </v-card-text>
@@ -35,7 +35,7 @@
           @click="feedSubmit"
           :disabled="!channelId"
         >
-          Add
+          {{ $t('Add') }}
         </v-btn>
       </v-card-actions>
     </v-card>

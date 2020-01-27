@@ -7,11 +7,11 @@
     <v-list dense class="d-block d-sm-none">
       <v-list-item inactive>
         <v-text-field
-          solo-inverted
+          outlined
           flat
           hide-details
           single-line
-          label="Search"
+          :placeholder="$t('Search')"
           v-model="searchQuery"
           clearable
         />
@@ -19,11 +19,11 @@
     </v-list>
 
     <v-list dense>
-      <v-subheader>CHANNELS</v-subheader>
+      <v-subheader>{{ $t('Channels') }}</v-subheader>
       <v-list-item-group v-model="selectedChannel" color="primary">
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>All channels</v-list-item-title>
+            <v-list-item-title>{{ $t('All channels') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item v-for="(channel, index) in channels" :key="channel.id">

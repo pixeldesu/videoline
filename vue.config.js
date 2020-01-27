@@ -3,6 +3,7 @@ module.exports = {
     'vuetify',
     'vuex-persist',
   ],
+
   pwa: {
     name: 'videoline',
     themeColor: '#1976d2',
@@ -18,6 +19,15 @@ module.exports = {
     workboxOptions: {
       swSrc: 'src/serviceWorker.js',
       swDest: 'service-worker.js',
+    },
+  },
+
+  pluginOptions: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableInSFC: true,
     },
   },
 };

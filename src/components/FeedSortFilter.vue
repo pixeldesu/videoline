@@ -6,7 +6,8 @@
           dense
           v-model="selectedProperty"
           :items="ALLOWED_PROPERTIES"
-          label="Sort by"
+          item-text="text"
+          :label="$t('Sort by')"
         >
       </v-select>
     </v-col>
@@ -15,7 +16,7 @@
           dense
           v-model="selectedOrder"
           :items="ALLOWED_ORDERINGS"
-          label="Order"
+          :label="$t('Order')"
         >
       </v-select>
     </v-col>
@@ -29,7 +30,7 @@ export default {
   data: () => ({
     ALLOWED_PROPERTIES: [
       {
-        text: 'Publish Date',
+        text: 'Publish date',
         value: 'published',
       },
       {

@@ -1,0 +1,23 @@
+{
+  "Search": "Search",
+  "Add": "Add",
+  "Add feed": "Add feed",
+  "Refresh": "Refresh",
+  "Add channel feed": "Add channel feed",
+  "Channels": "Channels",
+  "All channels": "All channels",
+  "YouTube channel ID": "YouTube channel ID",
+  "Sort by": "Sort by",
+  "Order": "Order",
+  "Publish date": "Publish date",
+  "Views": "Views",
+  "views": "views",
+  "Ascending": "Ascending",
+  "Descending": "Descending",
+  "Releases": "Releases",
+  "About": "About",
+  "About videoline": "About videoline",
+  "videoline description text": "videoline is a Google-free YouTube \"subscription\" manager. Utilizing RSS feeds to follow activity of channels and display videos in a YouTube-like fashion!",
+  "View on GitHub": "View on GitHub",
+  "Close": "Close"
+}
