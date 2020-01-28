@@ -37,4 +37,7 @@ export default {
   [types.SET_SORTING_ORDER](state, order) {
     state.sorting.order = order;
   },
+  [types.SET_CONFIG](state, config) {
+    state.config = config;
+  },
 };
