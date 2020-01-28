@@ -10,4 +10,9 @@ export default {
     property: 'published',
     order: 'desc',
   },
+  config: {
+    corsProxyUrl: 'https://cors-anywhere.herokuapp.com/',
+    videoLinkProvider: 'https://invidio.us/watch?v=',
+    customVideoLinkProvider: '',
+  },
 };

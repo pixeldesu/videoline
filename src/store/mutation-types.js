@@ -10,3 +10,4 @@ export const SEARCH = 'SEARCH';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SET_SORTING_PROPERTY = 'SET_SORTING_PROPERTY';
 export const SET_SORTING_ORDER = 'SET_SORTING_ORDER';
+export const SET_CONFIG = 'SET_CONFIG';
