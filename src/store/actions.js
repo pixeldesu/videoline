@@ -113,9 +113,9 @@ export default {
     commit(types.UPDATE_SEARCH_INDEX, fuse(state.videos));
   },
 
-  async getFeed({ commit, dispatch }, channelID) {
+  async getFeed({ commit, dispatch, state }, channelID) {
     commit(types.SET_LOADING, true);
-    const feed = await loadFeed(channelID);
+    const feed = await loadFeed(state.config.corsProxyUrl, channelID);
     commit(types.SET_LOADING, false);
 
     dispatch('addChannel', feed);
@@ -124,7 +124,7 @@ export default {
 
   async refreshFeed({ dispatch, state }) {
     state.channels.forEach(async (channel) => {
-      const feed = await loadFeed(channel.id);
+      const feed = await loadFeed(state.config.corsProxyUrl, channel.id);
       dispatch('addVideos', feed);
     });
   },
@@ -149,5 +149,11 @@ export default {
   updateSortingOrder({ commit, dispatch }, order) {
     commit(types.SET_SORTING_ORDER, order);
     dispatch('getVideos');
+  },
+
+  updateConfig({ commit, state }, payload) {
+    const config = { ...state.config, ...payload };
+
+    commit(types.SET_CONFIG, config);
   },
 };
