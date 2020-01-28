@@ -24,7 +24,7 @@ export default {
   props: ['entry'],
   computed: {
     link() {
-      return `https://www.invidio.us/watch?v=${this.entry.id}`;
+      return `${this.$store.getters.videoUrl}${this.entry.id}`;
     },
   },
   filters: {
