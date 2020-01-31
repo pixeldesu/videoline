@@ -113,9 +113,9 @@ export default {
     commit(types.UPDATE_SEARCH_INDEX, fuse(state.videos));
   },
 
-  async getFeed({ commit, dispatch, state }, channelID) {
+  async getFeed({ commit, dispatch, state }, payload) {
     commit(types.SET_LOADING, true);
-    const feed = await loadFeed(state.config.corsProxyUrl, channelID);
+    const feed = await loadFeed(state.config.corsProxyUrl, payload.value, payload.type);
     commit(types.SET_LOADING, false);
 
     dispatch('addChannel', feed);
