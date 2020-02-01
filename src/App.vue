@@ -58,6 +58,6 @@ export default {
 }
 
 .safe-area-ios-4x {
-  padding-top: calc(2 * env(safe-area-inset-top));
+  padding-top: calc(4 * env(safe-area-inset-top));
 }
 </style>
