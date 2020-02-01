@@ -1,6 +1,7 @@
 export default {
   channels: [],
   drawer: false,
+  errorMessages: [],
   fuse: null,
   loading: false,
   searchQuery: '',

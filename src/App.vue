@@ -7,6 +7,14 @@
       <v-container>
         <FeedSortFilter/>
         <FeedContainer v-if="videos" :loading="loading" :entries="videos"/>
+        <v-snackbar
+          bottom
+          color="error"
+          value="true"
+          v-for="(errorMessage, index) in errorMessages" :key="index"
+          >
+          {{ errorMessage }}
+        </v-snackbar>
       </v-container>
     </v-content>
   </v-app>
@@ -31,6 +39,7 @@ export default {
   },
 
   computed: mapState([
+    'errorMessages',
     'loading',
     'videos',
   ]),

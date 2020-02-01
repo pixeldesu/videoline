@@ -115,11 +115,16 @@ export default {
 
   async getFeed({ commit, dispatch, state }, payload) {
     commit(types.SET_LOADING, true);
-    const feed = await loadFeed(state.config.corsProxyUrl, payload.value, payload.type);
-    commit(types.SET_LOADING, false);
 
-    dispatch('addChannel', feed);
-    dispatch('addVideos', feed);
+    try {
+      const feed = await loadFeed(state.config.corsProxyUrl, payload.value, payload.type);
+      dispatch('addChannel', feed);
+      dispatch('addVideos', feed);
+    } catch (e) {
+      commit(types.ADD_ERROR_MESSAGE, 'There was an error loading the requested channel feed. Check for typos or the proper type setting!');
+    }
+    
+    commit(types.SET_LOADING, false);
   },
 
   async refreshFeed({ dispatch, state }) {
