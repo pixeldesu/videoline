@@ -3,6 +3,8 @@
       app
       clipped-left
       color="primary"
+      class="safe-area-ios"
+      height="auto"
       dark
     >
     <v-app-bar-nav-icon @click="drawer = !drawer" />

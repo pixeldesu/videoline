@@ -2,6 +2,7 @@
   <v-navigation-drawer
       app
       clipped
+      class="safe-area-ios"
       v-model="drawer"
     >
     <v-list dense class="d-block d-sm-none">
