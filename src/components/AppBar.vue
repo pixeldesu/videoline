@@ -3,7 +3,7 @@
       app
       clipped-left
       color="primary"
-      class="vl-header"
+      class="safe-area-ios"
       height="auto"
       dark
     >
@@ -84,9 +84,3 @@ export default {
   ]),
 };
 </script>
-
-<style>
-.vl-header {
-  padding-top: env(safe-area-inset-top);
-}
-</style>

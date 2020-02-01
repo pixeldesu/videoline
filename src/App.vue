@@ -4,7 +4,7 @@
     <AppNavigationDrawer/>
 
     <v-content>
-      <v-container>
+      <v-container class="safe-area-ios">
         <FeedSortFilter/>
         <FeedContainer v-if="videos" :loading="loading" :entries="videos"/>
         <v-snackbar
@@ -55,5 +55,9 @@ export default {
 <style>
 body {
   background-color: #1976d2;
+}
+
+.safe-area-ios {
+  padding-top: env(safe-area-inset-top);
 }
 </style>
