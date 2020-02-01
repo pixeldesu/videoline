@@ -3,6 +3,7 @@
       app
       clipped-left
       color="primary"
+      class="vl-header"
       dark
     >
     <v-app-bar-nav-icon @click="drawer = !drawer" />
@@ -82,3 +83,10 @@ export default {
   ]),
 };
 </script>
+
+<style>
+.vl-header {
+  padding-top: env(safe-area-inset-top);
+  height: calc(64px + env(safe-area-inset-top));
+}
+</style>
