@@ -4,7 +4,7 @@
     <AppNavigationDrawer/>
 
     <v-content>
-      <v-container class="safe-area-ios-2x">
+      <v-container class="safe-area-ios-4x">
         <FeedSortFilter/>
         <FeedContainer v-if="videos" :loading="loading" :entries="videos"/>
         <v-snackbar
@@ -57,7 +57,7 @@ export default {
   padding-top: env(safe-area-inset-top);
 }
 
-.safe-area-ios-2x {
+.safe-area-ios-4x {
   padding-top: calc(2 * env(safe-area-inset-top));
 }
 </style>
