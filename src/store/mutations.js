@@ -40,4 +40,7 @@ export default {
   [types.SET_CONFIG](state, config) {
     state.config = config;
   },
+  [types.ADD_ERROR_MESSAGE](state, error) {
+    state.errorMessages.push(error);
+  },
 };
