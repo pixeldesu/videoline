@@ -4,7 +4,7 @@ import find from 'lodash.find';
 import * as types from './mutation-types';
 
 import database from '../modules/database';
-import loadFeed from '../modules/feed';
+import { loadFeed, getChannelFromFeed, getVideoFromFeedEntry } from '../modules/feed';
 import fuse from '../modules/search';
 
 export default {
@@ -27,10 +27,7 @@ export default {
   },
 
   async addChannel({ commit, state }, feed) {
-    const channel = {
-      name: feed.author[0].name[0],
-      id: feed['yt:channelId'][0],
-    };
+    const channel = getChannelFromFeed(feed);
 
     if (find(state.channels, { id: channel.id }) === undefined) {
       commit(types.ADD_CHANNEL, channel);
@@ -66,17 +63,9 @@ export default {
 
   async addVideos({ dispatch, state }, feed) {
     feed.entry.forEach(async (entry) => {
-      const video = {
-        id: entry['yt:videoId'][0],
-        title: entry.title[0],
-        description: entry['media:group'][0]['media:description'][0],
-        author: feed.author[0].name[0],
-        channel: feed['yt:channelId'][0],
-        views: parseInt(entry['media:group'][0]['media:community'][0]['media:statistics'][0].$.views, 10),
-        thumbnail: entry['media:group'][0]['media:thumbnail'][0].$.url,
-        published: entry.published[0],
-        updated: entry.updated[0],
-      };
+      // eslint-disable-next-line no-console
+      console.log(feed);
+      const video = getVideoFromFeedEntry(entry, feed);
 
       if (find(state.videos, { id: video.id }) === undefined) {
         await database.videos.put(video);
