@@ -4,7 +4,7 @@
       clipped-left
       color="primary"
       class="safe-area-ios"
-      height="auto"
+      :height="(isIos ? 'auto' : undefined)"
       dark
     >
     <v-app-bar-nav-icon @click="drawer = !drawer" />
@@ -59,6 +59,9 @@ export default {
     FeedDialog,
   },
   computed: {
+    isIos() {
+      return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    },
     drawer: {
       get() {
         return this.$store.state.drawer;
