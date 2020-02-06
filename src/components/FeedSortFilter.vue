@@ -36,6 +36,10 @@ export default {
         text: 'Views',
         value: 'views',
       },
+      {
+        text: 'Rating',
+        value: 'rating',
+      },
     ],
     ALLOWED_ORDERINGS: [
       {
