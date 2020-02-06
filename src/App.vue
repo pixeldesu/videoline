@@ -39,6 +39,7 @@ export default {
   },
 
   computed: mapState([
+    'config',
     'errorMessages',
     'loading',
     'videos',
@@ -48,6 +49,12 @@ export default {
     this.$store.dispatch('getChannels').then(() => {
       this.$store.dispatch('getVideos');
     });
+
+    this.$vuetify.theme.dark = this.$store.state.config.darkTheme;
+    this.$store.watch(
+      (state) => state.config.darkTheme,
+      (value) => { this.$vuetify.theme.dark = value; },
+    );
   },
 };
 </script>
