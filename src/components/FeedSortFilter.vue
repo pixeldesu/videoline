@@ -5,7 +5,7 @@
       <v-select
           dense
           v-model="selectedProperty"
-          :items="ALLOWED_PROPERTIES"
+          :items="properties"
           label="Sort by"
         >
       </v-select>
@@ -14,7 +14,7 @@
       <v-select
           dense
           v-model="selectedOrder"
-          :items="ALLOWED_ORDERINGS"
+          :items="orderings"
           label="Order"
         >
       </v-select>
@@ -23,34 +23,14 @@
 </template>
 
 <script>
+import { ALLOWED_PROPERTIES, ALLOWED_ORDERINGS } from '../modules/sorting';
+
 export default {
   name: 'FeedSortFilter',
 
   data: () => ({
-    ALLOWED_PROPERTIES: [
-      {
-        text: 'Publish Date',
-        value: 'published',
-      },
-      {
-        text: 'Views',
-        value: 'views',
-      },
-      {
-        text: 'Rating',
-        value: 'rating',
-      },
-    ],
-    ALLOWED_ORDERINGS: [
-      {
-        text: 'Ascending',
-        value: 'asc',
-      },
-      {
-        text: 'Descending',
-        value: 'desc',
-      },
-    ],
+    properties: ALLOWED_PROPERTIES,
+    orderings: ALLOWED_ORDERINGS,
   }),
 
   computed: {
