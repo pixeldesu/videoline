@@ -3,13 +3,13 @@
       app
       clipped-left
       color="primary"
-      class="safe-area-ios"
+      class="safe-area-ios vl-header"
       :height="(isIos ? 'auto' : undefined)"
       dark
     >
     <v-app-bar-nav-icon @click="drawer = !drawer" />
     <div class="d-flex align-center">
-      <v-toolbar-title>videoline</v-toolbar-title>
+      <img class="vl-logo" src="../assets/logo.png"/>
     </div>
 
     <v-spacer></v-spacer>
@@ -87,3 +87,14 @@ export default {
   ]),
 };
 </script>
+
+<style>
+.vl-header {
+  background: linear-gradient(0deg, rgba(92,107,192,1) 0%, rgba(49,27,146,1) 100%);
+}
+
+.vl-logo {
+  height: 36px;
+  width: auto;
+}
+</style>

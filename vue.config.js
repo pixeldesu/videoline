@@ -5,13 +5,10 @@ module.exports = {
   ],
   pwa: {
     name: 'videoline',
-    themeColor: '#1976d2',
-    msTileColor: '#1976d2',
+    themeColor: '#311b92',
+    msTileColor: '#311b92',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black-translucent',
-    manifestOptions: {
-      background_color: '#1976d2',
-    },
 
     // configure the workbox plugin
     workboxPluginMode: 'InjectManifest',
