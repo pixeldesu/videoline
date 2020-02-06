@@ -29,9 +29,9 @@ export default {
   async addChannel({ commit, state }, feed) {
     const channel = getChannelFromFeed(feed);
 
+    await database.channels.put(channel);
     if (find(state.channels, { id: channel.id }) === undefined) {
       commit(types.ADD_CHANNEL, channel);
-      await database.channels.put(channel);
     }
   },
 
@@ -61,15 +61,13 @@ export default {
     dispatch('getVideos');
   },
 
-  async addVideos({ dispatch, state }, feed) {
+  async addVideos({ dispatch }, feed) {
     feed.entry.forEach(async (entry) => {
       // eslint-disable-next-line no-console
       console.log(feed);
       const video = getVideoFromFeedEntry(entry, feed);
 
-      if (find(state.videos, { id: video.id }) === undefined) {
-        await database.videos.put(video);
-      }
+      await database.videos.put(video);
     });
 
     dispatch('getVideos');
