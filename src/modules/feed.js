@@ -11,6 +11,7 @@ export function getVideoFromFeedEntry(entry, feed) {
     description: entry['media:group'][0]['media:description'][0],
     author: feed.author[0].name[0],
     channel: feed['yt:channelId'][0],
+    rating: parseFloat(entry['media:group'][0]['media:community'][0]['media:starRating'][0].$.average),
     views: parseInt(entry['media:group'][0]['media:community'][0]['media:statistics'][0].$.views, 10),
     thumbnail: entry['media:group'][0]['media:thumbnail'][0].$.url,
     published: entry.published[0],
