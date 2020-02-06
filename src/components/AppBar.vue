@@ -2,7 +2,6 @@
   <v-app-bar
       app
       clipped-left
-      color="primary"
       class="safe-area-ios vl-header"
       :height="(isIos ? 'auto' : undefined)"
       dark

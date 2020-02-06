@@ -24,6 +24,7 @@
       </v-card-title>
       
       <v-card-text>
+        <v-switch v-model="darkTheme" label="Dark Theme"></v-switch>
         Video Link Provider:
         <v-radio-group class="mt-0" v-model="videoLinkProvider">
           <v-radio label="YouTube" value="https://youtube.com/watch?v="/>
@@ -71,6 +72,15 @@ export default {
   }),
 
   computed: {
+    darkTheme: {
+      get() {
+        return this.$store.state.config.darkTheme;
+      },
+
+      set(value) {
+        this.$store.dispatch('updateConfig', { darkTheme: value });
+      },
+    },
     corsProxyUrl: {
       get() {
         return this.$store.state.config.corsProxyUrl;
