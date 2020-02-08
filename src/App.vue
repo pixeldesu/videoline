@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <AppBar/>
-    <AppNavigationDrawer/>
+    <Sidebar/>
 
     <v-content>
       <v-container class="safe-area-ios-container">
@@ -24,18 +24,18 @@
 import { mapState } from 'vuex';
 
 import AppBar from './components/AppBar.vue';
-import AppNavigationDrawer from './components/AppNavigationDrawer.vue';
 import FeedContainer from './components/FeedContainer.vue';
 import FeedSortFilter from './components/FeedSortFilter.vue';
+import Sidebar from './components/Sidebar.vue';
 
 export default {
   name: 'App',
 
   components: {
     AppBar,
-    AppNavigationDrawer,
     FeedContainer,
     FeedSortFilter,
+    Sidebar,
   },
 
   computed: mapState([
