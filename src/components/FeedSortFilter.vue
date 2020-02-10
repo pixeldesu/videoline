@@ -6,7 +6,7 @@
           dense
           v-model="selectedProperty"
           :items="properties"
-          label="Sort by"
+          :label="$t('feedSortFilter.sortBy')"
         >
       </v-select>
     </v-col>
@@ -15,7 +15,7 @@
           dense
           v-model="selectedOrder"
           :items="orderings"
-          label="Order"
+          :label="$t('feedSortFilter.order')"
         >
       </v-select>
     </v-col>

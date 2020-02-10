@@ -13,7 +13,7 @@
         class="headline"
         primary-title
       >
-        Add Channel Feed
+        {{ $t('feedDialog.title') }}
       </v-card-title>
 
       <v-card-text>
@@ -21,14 +21,14 @@
           v-model="feedType"
           row
           >
-          <v-radio value="channel_id" label="Channel ID"></v-radio>
-          <v-radio value="user" label="Username"></v-radio>
+          <v-radio value="channel_id" :label="$t('feedDialog.radioChannelID')"></v-radio>
+          <v-radio value="user" :label="$t('feedDialog.radioUsername')"></v-radio>
         </v-radio-group>
         <v-text-field
           class="pt-0"
           v-model="channelId"
           :prefix="feedPrefix[feedType]"
-          :placeholder="feedPlaceholder[feedType]"
+          :placeholder="$t(feedPlaceholder[feedType])"
           ref="channel"
           persistent-hint
           :hint="feedHint[feedType]"
@@ -45,7 +45,7 @@
           @click="feedSubmit"
           :disabled="!channelId"
         >
-          Add
+          {{ $t('buttonText.add') }}
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'FeedDialog',
   data: () => ({
@@ -64,12 +65,12 @@ export default {
       user: 'https://youtube.com/user/',
     },
     feedHint: {
-      channel_id: 'You can get the channel ID from a YouTube video page. The link on the username includes it.',
-      user: 'This is the general format for URLs of YouTube channels. You can also get the username from the link on the avatar of a video uploader.',
+      channel_id: 'You can get the channel ID from a YouTube video page. The link on the username includes it.', // this.i18n.$t('feedDialog.hintChannelID'),
+      user: 'This is the general format for URLs of YouTube channels. You can also get the username from the link on the avatar of a video uploader.', // this.i18n.$t('feedDialog.hintUser'),
     },
     feedPlaceholder: {
-      channel_id: 'YouTube channel ID',
-      user: 'YouTube channel username',
+      channel_id: 'YouTube channel ID', // this.$i18n.t('feedDialog.feedPlaceholderChannelID'),
+      user: 'YouTube channel username', // this.$i18n.t('feedDialog.feedPlaceholderUsername'),
     },
   }),
   methods: {
