@@ -20,11 +20,11 @@
     </v-list>
 
     <v-list dense>
-      <v-subheader>CHANNELS</v-subheader>
+      <v-subheader>{{ $t('appNavigationDrawer.subheader') }}</v-subheader>
       <v-list-item-group v-model="selectedChannel" color="primary">
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>All channels</v-list-item-title>
+            <v-list-item-title>{{ $t('appNavigationDrawer.allchannels') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item v-for="(channel, index) in channels" :key="channel.id">

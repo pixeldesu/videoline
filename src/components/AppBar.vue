@@ -8,7 +8,7 @@
     >
     <v-app-bar-nav-icon @click="drawer = !drawer" />
     <div class="d-flex align-center">
-      <img class="vl-logo" src="../assets/logo.png"/>
+      <img class="vl-logo" src="../assets/logo.png" alt=""/>
     </div>
 
     <v-spacer></v-spacer>
@@ -19,7 +19,7 @@
       hide-details
       single-line
       outlined
-      label="Search"
+      :label="$t('appBar.search')"
       v-model="searchQuery"
       clearable
     />
@@ -32,14 +32,14 @@
         @click="refreshFeed"
       >
         <v-icon :left="$vuetify.breakpoint.smAndUp">mdi-refresh</v-icon>
-        <span class="d-none d-sm-inline">Refresh</span>
+        <span class="d-none d-sm-inline">{{ $t('appBar.refresh') }}</span>
       </v-btn>
       
       <FeedDialog @feedSubmitted="getFeed">
         <template v-slot:dialog-activator="{ on }">
           <v-btn text v-on="on">
             <v-icon :left="$vuetify.breakpoint.smAndUp">mdi-plus</v-icon>
-            <span class="d-none d-sm-inline">Add Feed</span>
+            <span class="d-none d-sm-inline">{{ $t('appBar.addfeed') }}</span>
           </v-btn>
         </template>
       </FeedDialog>
