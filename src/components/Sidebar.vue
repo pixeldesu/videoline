@@ -37,6 +37,7 @@
     <template v-slot:append>
       <v-divider/>
       <v-list dense>
+        <ManagementDialog/>
         <SettingsDialog/>
         <AboutDialog/>
       </v-list>
@@ -46,6 +47,7 @@
 
 <script>
 import AboutDialog from './AboutDialog.vue';
+import ManagementDialog from './ManagementDialog.vue';
 import SettingsDialog from './SettingsDialog.vue';
 import SidebarChannelList from './SidebarChannelList.vue';
 import SidebarCollectionList from './SidebarCollectionList.vue';
@@ -54,6 +56,7 @@ export default {
   name: 'Sidebar',
   components: {
     AboutDialog,
+    ManagementDialog,
     SettingsDialog,
     SidebarChannelList,
     SidebarCollectionList,
