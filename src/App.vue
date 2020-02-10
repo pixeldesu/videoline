@@ -46,6 +46,7 @@ export default {
   ]),
 
   async created() {
+    this.$store.dispatch('getCollections');
     this.$store.dispatch('getChannels').then(() => {
       this.$store.dispatch('getVideos');
     });
