@@ -43,4 +43,7 @@ export default {
   [types.ADD_ERROR_MESSAGE](state, error) {
     state.errorMessages.push(error);
   },
+  [types.GET_COLLECTIONS](state, collections) {
+    state.collections = collections;
+  },
 };

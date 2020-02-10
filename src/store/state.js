@@ -1,4 +1,5 @@
 export default {
+  collections: [],
   channels: [],
   drawer: false,
   errorMessages: [],

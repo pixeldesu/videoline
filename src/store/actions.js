@@ -148,4 +148,25 @@ export default {
 
     commit(types.SET_CONFIG, config);
   },
+
+  async addCollection({ dispatch }, collectionName) {
+    await database.collections.put({ name: collectionName });
+
+    dispatch('getCollections');
+  },
+
+  async removeCollection({ dispatch }, id) {
+    await database.collections
+      .where('id')
+      .equals(id)
+      .delete();
+
+    dispatch('getCollections');
+  },
+
+  async getCollections({ commit }) {
+    const collections = await database.collections.toArray();
+
+    commit(types.GET_COLLECTIONS, collections);
+  },
 };
