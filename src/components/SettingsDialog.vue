@@ -101,7 +101,7 @@ export default {
     },
     customVideoLinkProvider: {
       get() {
-        return this.$store.state.config.videoLinkProvider;
+        return this.$store.state.config.customVideoLinkProvider;
       },
 
       set(value) {
