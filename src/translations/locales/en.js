@@ -30,6 +30,18 @@ export default {
   feedSortFilter: {
     sortBy: 'Sort by',
     order: 'Order',
+    allowedProperties: {
+      publishDate: 'Publish Date',
+      views: 'Views',
+      rating: 'Rating',
+    },
+    allowedOrderings: {
+      ascending: 'Ascending',
+      descending: 'Descending',
+    },
+  },
+  feedItem: {
+    views: 'no views | 1 view | {count} views',
   },
   settingsDialog: {
     title: 'Settings',

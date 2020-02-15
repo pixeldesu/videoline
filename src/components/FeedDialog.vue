@@ -56,7 +56,7 @@
 
 export default {
   name: 'FeedDialog',
-  data: () => ({
+  data: (vm) => ({
     dialog: false,
     feedType: 'channel_id',
     channelId: '',
@@ -65,12 +65,12 @@ export default {
       user: 'https://youtube.com/user/',
     },
     feedHint: {
-      channel_id: 'You can get the channel ID from a YouTube video page. The link on the username includes it.', // this.i18n.$t('feedDialog.hintChannelID'),
-      user: 'This is the general format for URLs of YouTube channels. You can also get the username from the link on the avatar of a video uploader.', // this.i18n.$t('feedDialog.hintUser'),
+      channel_id: vm.$t('feedDialog.hintChannelID'),
+      user: vm.$t('feedDialog.hintUser'),
     },
     feedPlaceholder: {
-      channel_id: 'YouTube channel ID', // this.$i18n.t('feedDialog.feedPlaceholderChannelID'),
-      user: 'YouTube channel username', // this.$i18n.t('feedDialog.feedPlaceholderUsername'),
+      channel_id: vm.$t('feedDialog.feedPlaceholderChannelID'),
+      user: vm.$t('feedDialog.feedPlaceholderUsername'),
     },
   }),
   methods: {
