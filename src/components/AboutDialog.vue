@@ -21,7 +21,7 @@
         class="headline"
         primary-title
       >
-      
+        {{ $t('aboutDialog.title') }}
       </v-card-title>
 
       <v-card-text>
