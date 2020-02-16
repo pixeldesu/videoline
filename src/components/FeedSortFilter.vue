@@ -48,7 +48,7 @@ export default {
         value: 'asc',
       },
       {
-        text: vm.$t('feedSortFilter.allowedOrderings.ascending'),
+        text: vm.$t('feedSortFilter.allowedOrderings.descending'),
         value: 'desc',
       },
     ],
