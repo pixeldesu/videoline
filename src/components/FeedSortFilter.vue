@@ -1,7 +1,7 @@
 <template>
   <v-row align="center">
     <v-spacer/>
-    <v-col class="d-flex" cols="6" sm="2">
+    <v-col class="d-flex" cols="12" sm="6" md="3" lg="2">
       <v-select
           dense
           v-model="selectedProperty"
@@ -10,7 +10,7 @@
         >
       </v-select>
     </v-col>
-    <v-col class="d-flex" cols="6" sm="2">
+    <v-col class="d-flex" cols="12" sm="6" md="3" lg="2">
       <v-select
           dense
           v-model="selectedOrder"
@@ -76,3 +76,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .v-select__selection {
+    max-width: 100%;
+  }
+</style>
