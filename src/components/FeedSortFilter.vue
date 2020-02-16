@@ -23,16 +23,37 @@
 </template>
 
 <script>
-import { ALLOWED_PROPERTIES, ALLOWED_ORDERINGS } from '../modules/sorting';
 
 export default {
   name: 'FeedSortFilter',
-
-  data: () => ({
-    properties: ALLOWED_PROPERTIES,
-    orderings: ALLOWED_ORDERINGS,
+  
+  data: (vm) => ({
+    properties: [
+      {
+        text: vm.$t('feedSortFilter.allowedProperties.publishedDate'),
+        value: 'published',
+      },
+      {
+        text: vm.$t('feedSortFilter.allowedProperties.views'),
+        value: 'views',
+      },
+      {
+        text: vm.$t('feedSortFilter.allowedProperties.rating'),
+        value: 'rating',
+      },
+    ],
+    orderings: [
+      {
+        text: vm.$t('feedSortFilter.allowedOrderings.ascending'),
+        value: 'asc',
+      },
+      {
+        text: vm.$t('feedSortFilter.allowedOrderings.ascending'),
+        value: 'desc',
+      },
+    ],
   }),
-
+  
   computed: {
     selectedProperty: {
       get() {

@@ -30,6 +30,18 @@ export default {
   feedSortFilter: {
     sortBy: 'Sortierung',
     order: 'Anordnung',
+    allowedProperties: {
+      publishedDate: 'Veröffentlichungsdatum',
+      views: 'Aufrufe',
+      rating: 'Bewertung',
+    },
+    allowedOrderings: {
+      ascending: 'Aufsteigend',
+      descending: 'Absteigend',
+    },
+  },
+  feedItem: {
+    views: '0 Aufrufe | 1 Aufruf | {count} Aufrufe',
   },
   settingsDialog: {
     title: 'Einstellungen',

@@ -31,7 +31,7 @@ export default {
     sortBy: 'Sort by',
     order: 'Order',
     allowedProperties: {
-      publishDate: 'Publish Date',
+      publishedDate: 'Published Date',
       views: 'Views',
       rating: 'Rating',
     },
