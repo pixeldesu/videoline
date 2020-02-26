@@ -10,7 +10,7 @@
         color="grey darken-4 white--text transparent"
         label
       >
-        {{ entry.views | thousands_sep }} views
+        {{ $tc('feedItem.views', entry.views, { count: entry.views }) | thousands_sep }}
       </v-chip>
     </v-img>
     <v-card-title class="subtitle-2 text-truncate d-block">{{ entry.title }}</v-card-title>
