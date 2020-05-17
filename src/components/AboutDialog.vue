@@ -11,7 +11,7 @@
           <v-icon>mdi-information</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>About</v-list-item-title>
+          <v-list-item-title>{{ $t('aboutDialog.title') }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </template>
@@ -21,19 +21,17 @@
         class="headline"
         primary-title
       >
-        About videoline
+        {{ $t('aboutDialog.title') }}
       </v-card-title>
 
       <v-card-text>
-        videoline is a Google-free YouTube "subscription" manager.
-        Utilizing RSS feeds to follow activity of channels and display videos
-        in a YouTube-like fashion!
+        {{ $t('aboutDialog.introtext') }}
       </v-card-text>
 
       <v-divider/>
 
       <v-card-text style="height: 300px;">
-        <h2 class="headline text--primary mt-4 mb-2">Releases</h2>
+        <h2 class="headline text--primary mt-4 mb-2">{{ $t('aboutDialog.releases') }}</h2>
         <div v-if="loading">
           <v-skeleton-loader v-for="n in 3" :key="n"
             type="article"
@@ -54,14 +52,14 @@
           text
           href="https://github.com/pixeldesu/videoline"
         >
-          View on GitHub
+          {{ $t('aboutDialog.githubLink') }}
         </v-btn>
         <v-btn
           color="primary"
           text
           @click="dialog = !dialog"
         >
-          Close
+          {{ $t('buttonText.close') }}
         </v-btn>
       </v-card-actions>
     </v-card>

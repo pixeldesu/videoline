@@ -10,7 +10,7 @@
           <v-icon>mdi-settings</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Settings</v-list-item-title>
+          <v-list-item-title>{{ $t('settingsDialog.title') }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </template>
@@ -20,28 +20,31 @@
         class="headline"
         primary-title
       >
-        Settings
+        {{ $t('settingsDialog.headline') }}
       </v-card-title>
       
       <v-card-text>
-        <v-switch v-model="darkTheme" label="Dark Theme"></v-switch>
-        Video Link Provider:
+        <v-switch
+          v-model="darkTheme"
+          :label="$t('settingsDialog.darktheme')"
+        />
+        {{ $t('settingsDialog.videoLinkProviderTitle') }}:
         <v-radio-group class="mt-0" v-model="videoLinkProvider">
           <v-radio label="YouTube" value="https://youtube.com/watch?v="/>
           <v-radio label="invidio.us" value="https://invidio.us/watch?v="/>
-          <v-radio label="Custom" value="custom"/>
+          <v-radio :label="$t('settingsDialog.radioCustomLabel')" value="custom"/>
         </v-radio-group>
         <v-text-field
-            label="Custom Link Provider"
+            :label="$t('settingsDialog.customLinkProviderLabel')"
             placeholder="https://my-cool-website.com/watch?v="
             v-model="customVideoLinkProvider"
             v-if="videoLinkProvider === 'custom'"
           >
         </v-text-field>
         <v-text-field
-            label="CORS Proxy"
+            :label="$t('settingsDialog.corsproxy.label')"
             placeholder="https://a-cool-proxy.com/"
-            hint="Only change this if there are continuous issues with feed fetching!"
+            :hint="$t('settingsDialog.corsproxy.hint')"
             persistent-hint
             v-model="corsProxyUrl"
           >
@@ -67,7 +70,7 @@
           text
           @click="dialog = !dialog"
         >
-          Close
+          {{ $t('buttonText.close') }}
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -112,7 +115,7 @@ export default {
     },
     customVideoLinkProvider: {
       get() {
-        return this.$store.state.config.videoLinkProvider;
+        return this.$store.state.config.customVideoLinkProvider;
       },
 
       set(value) {
