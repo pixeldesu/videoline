@@ -25,3 +25,23 @@ export function getChannelFromFeed(feed) {
     id: feed['yt:channelId'][0],
   };
 }
+
+
+export function getFeedsFromOpml(opmlFile, outlineCallback, errorCallback) {
+  function handleParseResult(err, result) {
+    if (err !== null) {
+      // eslint-disable-next-line no-console
+      errorCallback(`This file does not appear to be valid XML: ${err}`);
+      return;
+    }
+
+    // eslint-disable-next-line no-console
+    try {
+      result.opml.body[0].outline[0].outline.forEach(outlineCallback);
+    } catch (e) {
+      errorCallback(`This XML file does not appear to be a YouTube OPML export: ${e}`);
+    }
+  }
+
+  xml2js.parseString(opmlFile, handleParseResult);
+}
