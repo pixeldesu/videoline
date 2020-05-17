@@ -30,12 +30,10 @@ export function getChannelFromFeed(feed) {
 export function getFeedsFromOpml(opmlFile, outlineCallback, errorCallback) {
   function handleParseResult(err, result) {
     if (err !== null) {
-      // eslint-disable-next-line no-console
       errorCallback(`This file does not appear to be valid XML: ${err}`);
       return;
     }
 
-    // eslint-disable-next-line no-console
     try {
       result.opml.body[0].outline[0].outline.forEach(outlineCallback);
     } catch (e) {
