@@ -62,11 +62,12 @@
       </v-card-text>
 
       <v-card-text>
-        <a target="_blank" href="https://www.youtube.com/subscription_manager?action_takeout=1">YouTube OPML</a> import:
+        <i18n path="settingsDialog.opmlImport" tag="span">
+          <a href="https://www.youtube.com/subscription_manager?action_takeout=1" target="_blank">{{ $t('settingsDialog.youtubeOpmlExport') }}</a>
+        </i18n>:
+
         <v-file-input
             v-model="opmlImport"
-            hint="Add all the feeds from a YouTube OPML export to your VideoLine subscriptions."
-            persistent-hint
             accept="application/xml"
           >
         </v-file-input>
