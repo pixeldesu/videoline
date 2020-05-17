@@ -54,5 +54,7 @@ export default {
       label: 'CORS Proxy',
       hint: 'Only change this if there are continuous issues with feed fetching!',
     },
+    opmlImport: 'Import feeds from a {0}',
+    youtubeOpmlExport: 'YouTube OPML export',
   },
 };
