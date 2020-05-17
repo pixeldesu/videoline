@@ -61,6 +61,17 @@
         </v-text-field>
       </v-card-text>
 
+      <v-card-text>
+        <a target="_blank" href="https://www.youtube.com/subscription_manager?action_takeout=1">YouTube OPML</a> import:
+        <v-file-input
+            v-model="opmlImport"
+            hint="Add all the feeds from a YouTube OPML export to your VideoLine subscriptions."
+            persistent-hint
+            accept="application/xml"
+          >
+        </v-file-input>
+      </v-card-text>
+
       <v-divider/>
       <v-card-actions>
         <v-spacer/>
@@ -128,6 +139,15 @@ export default {
 
       set(value) {
         this.$store.dispatch('updateConfig', { customVideoLinkProvider: value });
+      },
+    },
+    opmlImport: {
+      get() {
+        return [];
+      },
+
+      set(value) {
+        this.$store.dispatch('importOpml', { opmlImport: value });
       },
     },
   },

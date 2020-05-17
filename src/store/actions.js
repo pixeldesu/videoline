@@ -1,10 +1,13 @@
 import orderBy from 'lodash.orderby';
 import find from 'lodash.find';
+import * as queryString from 'query-string';
 
 import * as types from './mutation-types';
 
 import database from '../modules/database';
-import { loadFeed, getChannelFromFeed, getVideoFromFeedEntry } from '../modules/feed';
+import {
+  loadFeed, getChannelFromFeed, getVideoFromFeedEntry, getFeedsFromOpml,
+} from '../modules/feed';
 import fuse from '../modules/search';
 
 export default {
@@ -147,5 +150,20 @@ export default {
     const config = { ...state.config, ...payload };
 
     commit(types.SET_CONFIG, config);
+  },
+
+  importOpml({ commit, dispatch }, payload) {
+    const reader = new FileReader();
+    function addFromOutline(outline) {
+      const channelId = queryString.parse(outline.$.xmlUrl.split('?')[1]).channel_id;
+      dispatch('getFeed', {
+        value: channelId, type: 'channel_id',
+      });
+    }
+    function handleOutlineError(message) {
+      commit(types.ADD_ERROR_MESSAGE, message);
+    }
+    reader.onload = (e) => getFeedsFromOpml(e.target.result, addFromOutline, handleOutlineError);
+    reader.readAsText(payload.opmlImport);
   },
 };
