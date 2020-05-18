@@ -28,7 +28,7 @@
           class="pt-0"
           v-model="channelId"
           :prefix="feedPrefix[feedType]"
-          :placeholder="$t(feedPlaceholder[feedType])"
+          :placeholder="feedPlaceholder[feedType]"
           ref="channel"
           persistent-hint
           :hint="feedHint[feedType]"
