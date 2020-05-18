@@ -46,7 +46,10 @@ export default {
   settingsDialog: {
     title: 'Settings',
     headline: 'Settings',
-    darktheme: 'Dark Theme',
+    theme: 'Theme',
+    systemtheme: 'Respect system setting',
+    darktheme: 'Dark',
+    lighttheme: 'Light',
     videoLinkProviderTitle: 'Video Link Provider',
     radioCustomLabel: 'Custom',
     customLinkProviderLabel: 'Custom Link Provider',

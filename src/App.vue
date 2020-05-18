@@ -45,16 +45,32 @@ export default {
     'videos',
   ]),
 
+
   async created() {
+    const self = this;
+
     this.$store.dispatch('getChannels').then(() => {
       this.$store.dispatch('getVideos');
     });
 
-    this.$vuetify.theme.dark = this.$store.state.config.darkTheme;
+    function respectTheme() {
+      let { darkTheme } = self.$store.state.config;
+      if (darkTheme === 0) {
+        darkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      self.$vuetify.theme.dark = darkTheme;
+    }
+
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(respectTheme);
+    }
+
     this.$store.watch(
       (state) => state.config.darkTheme,
-      (value) => { this.$vuetify.theme.dark = value; },
+      respectTheme,
     );
+
+    respectTheme();
   },
 };
 </script>

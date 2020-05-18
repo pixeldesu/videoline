@@ -15,5 +15,6 @@ export default {
     corsProxyUrl: 'https://cors-anywhere.herokuapp.com/',
     videoLinkProvider: 'https://invidio.us/watch?v=',
     customVideoLinkProvider: '',
+    darkTheme: 0,
   },
 };

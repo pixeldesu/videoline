@@ -24,10 +24,13 @@
       </v-card-title>
       
       <v-card-text>
-        <v-switch
-          v-model="darkTheme"
-          :label="$t('settingsDialog.darktheme')"
-        />
+        {{ $t('settingsDialog.theme') }}:
+        <v-radio-group class="mt-0" v-model="darkTheme">
+          <v-radio :value="0" :label="$t('settingsDialog.systemtheme')"/>
+          <v-radio :value="false" :label="$t('settingsDialog.lighttheme')"/>
+          <v-radio :value="true" :label="$t('settingsDialog.darktheme')"/>
+        </v-radio-group>
+
         {{ $t('settingsDialog.videoLinkProviderTitle') }}:
         <v-radio-group class="mt-0" v-model="videoLinkProvider">
           <v-radio label="YouTube" value="https://youtube.com/watch?v="/>
