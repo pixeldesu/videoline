@@ -10,7 +10,7 @@
         color="grey darken-4 white--text transparent"
         label
       >
-        {{ $tc('feedItem.views', entry.views, { count: entry.views }) | thousands_sep }}
+        {{ chip_content }}
       </v-chip>
     </v-img>
     <v-card-title class="subtitle-2 text-truncate d-block">{{ entry.title }}</v-card-title>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import * as relativeDate from 'relative-date';
+
 export default {
   name: 'FeedItem',
   props: ['entry'],
@@ -26,10 +28,12 @@ export default {
     link() {
       return `${this.$store.getters.videoUrl}${this.entry.id}`;
     },
-  },
-  filters: {
-    thousands_sep(number) {
-      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    chip_content() {
+      const viewCountThousands = this.entry.views.toString(10).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return {
+        published: relativeDate(Date.parse(this.entry.published)),
+        views: this.$tc('feedItem.views', this.entry.views, { count: viewCountThousands }),
+      }[this.$store.state.config.showInChip];
     },
   },
 };
