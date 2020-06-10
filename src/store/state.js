@@ -16,5 +16,6 @@ export default {
     videoLinkProvider: 'https://invidio.us/watch?v=',
     customVideoLinkProvider: '',
     darkTheme: 0,
+    showInChip: 'views'
   },
 };

@@ -37,6 +37,13 @@
           <v-radio label="invidio.us" value="https://invidio.us/watch?v="/>
           <v-radio :label="$t('settingsDialog.radioCustomLabel')" value="custom"/>
         </v-radio-group>
+
+        {{ $t('settingsDialog.showInChipTitle') }}:
+        <v-radio-group class="mt-0" v-model="showInChip">
+          <v-radio :label="$t('settingsDialog.showViewsInChip')" value="views"/>
+          <v-radio :label="$t('settingsDialog.showPublishedInChip')" value="published"/>
+        </v-radio-group>
+
         <v-text-field
             :label="$t('settingsDialog.customLinkProviderLabel')"
             placeholder="https://my-cool-website.com/watch?v="
@@ -94,6 +101,15 @@ export default {
 
       set(value) {
         this.$store.dispatch('updateConfig', { corsProxyUrl: value });
+      },
+    },
+    showInChip: {
+      get() {
+        return this.$store.state.config.showInChip;
+      },
+
+      set(value) {
+        this.$store.dispatch('updateConfig', { showInChip: value });
       },
     },
     videoLinkProvider: {
