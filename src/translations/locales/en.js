@@ -46,7 +46,10 @@ export default {
   settingsDialog: {
     title: 'Settings',
     headline: 'Settings',
-    darktheme: 'Dark Theme',
+    theme: 'Theme',
+    systemtheme: 'Respect system setting',
+    darktheme: 'Dark',
+    lighttheme: 'Light',
     showInChipTitle: 'Show over thumbnail',
     showViewsInChip: 'View count',
     showPublishedInChip: 'Date published',
