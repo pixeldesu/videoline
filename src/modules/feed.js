@@ -26,7 +26,6 @@ export function getChannelFromFeed(feed) {
   };
 }
 
-
 export function getFeedsFromOpml(opmlFile, outlineCallback, errorCallback) {
   function handleParseResult(err, result) {
     if (err !== null) {

@@ -45,7 +45,6 @@ export default {
     'videos',
   ]),
 
-
   async created() {
     const self = this;
 
