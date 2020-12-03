@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  videoline:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8080:80
