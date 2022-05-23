@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
-    "dexie": "^2.0.4",
+    "dexie": "^3.2.2",
     "fuse.js": "^3.4.6",
     "lodash.find": "^4.6.0",
     "lodash.orderby": "^4.6.0",
