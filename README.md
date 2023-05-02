@@ -1,50 +1,18 @@
-<p align="center"><img src=".github/images/videoline-logo.png" width="600"></p>
+# Vue 3 + TypeScript + Vite
 
-<p align="center"><i>A Google-free YouTube "subscription" management interface</i></p>
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-<p align="center"><img src=".github/images/screenshot.jpg" width="600"></p>
+## Recommended IDE Setup
 
-## About
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-videoline is a Google-free YouTube subscription management interface, which enables users to follow their favorite creators content without having to own a YouTube/Google account to subscribe and be notified about new uploads.
+## Type Support For `.vue` Imports in TS
 
-videoline utilizes YouTube's ancient RSS feeds and saves the video metadata to render the list of videos in a YouTube-like fashion.
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-In addition to being generally Google-free, the links to YouTube videos inside the feed also utilize https://www.invidio.us/ ([Project on GitHub](https://github.com/omarroth/invidious)) instead of YouTube, _which will be made configurable later to allow YouTube or custom/self-hosted invidious instances_.
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-The web app is made to run completely standalone without any backend service, utilizing browser technology like IndexedDB to store channel and video information. This is done so self-hosting is super easy, just build the app once and throw the assets on your server!
-
-You can check out a demo instance at https://videoline.app!
-
-## Setup
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-## Contributing
-
-There are many ways to contribute and all of them are welcome!
-
-* If you **found a bug** or have a **feature request**, [please report it](https://github.com/pixeldesu/videoline/issues/new)!
-* If you want to **fix a bug** or **add a feature**, [fork](https://github.com/pixeldesu/videoline/fork) the repository and [open a Pull Request](https://github.com/pixeldesu/videoline/compare)!
-
-
-## License
-
-This project is licensed under aGPL v3!
+1. Disable the built-in TypeScript Extension
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
