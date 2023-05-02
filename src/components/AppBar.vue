@@ -23,14 +23,19 @@
       >
       Refresh
     </v-btn>
-    <v-btn
-      prepend-icon="mdi-plus"
-      >
-      Add Feed
-    </v-btn>
+    <FeedDialog>
+      <template v-slot:dialog-activator="{ props }">
+        <v-btn
+          prepend-icon="mdi-plus"
+          v-bind="props"
+          >
+          Add Feed
+        </v-btn>
+      </template>
+    </FeedDialog>
   </v-app-bar>
 </template>
 
 <script setup lang="ts">
-
+import FeedDialog from './FeedDialog.vue'
 </script>
